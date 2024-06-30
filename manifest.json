@@ -1,13 +1,17 @@
 {
-"manifest_version": 2,
-"name": "AutoReload On Crash",
-"version": "1.0",
-"description": "Automatically reloads pages when they crash.",
-"permissions": ["tabs", "scripting"],
-"action": {
-    "default_popup": ""
-},
-"background": {
-    "service_worker": "background.js"
-}
-}
+    "manifest_version": 2,
+    "name": "AutoReload On Crash",
+    "version": "1.0",
+    "description": "Automatically reloads pages when they crash.",
+    "permissions": [
+      "tabs"
+    ],
+    "background": {
+      "scripts": ["src/background.js"],
+      "persistent": false
+    },
+    "browser_action": {
+      "default_title": "Reload Crashed Page"
+    }
+  }
+  
