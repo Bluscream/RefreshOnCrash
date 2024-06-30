@@ -1,15 +1,19 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.tabs.executeScript(null, {file: 'inject.js'});
+chrome.action.onClicked.addListener((tab) => {
+    // Attempt to reload the tab
+    chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ['inject.js']
+    });
   });
   
   function checkTabStatus(tabId) {
-    chrome.tabs.get(tabId, function(tab) {
-      if (tab.status == 'crashed') {
+    chrome.tabs.get(tabId, async (tab) => {
+      if (tab.status === 'crashed') {
         // Tab has crashed, attempt to reload
-        chrome.tabs.reload(tabId);
+        await chrome.tabs.reload(tabId);
       } else {
         // Schedule next check if tab is not crashed
-        setTimeout(function() {
+        setTimeout(() => {
           checkTabStatus(tabId);
         }, 5000); // Check every 5 seconds
       }
