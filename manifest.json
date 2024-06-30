@@ -1,21 +1,13 @@
 {
-    "manifest_version": 3,
-    "name": "AutoReload On Crash",
-    "version": "1.0",
-    "description": "Automatically reloads pages when they crash.",
-    "permissions": [
-      "tabs"
-    ],
-    "action": {
-      "default_popup": "",
-      "default_icon": {
-        "16": "images/icon16.png",
-        "48": "images/icon48.png",
-        "128": "images/icon128.png"
-      }
-    },
-    "background": {
-      "service_worker": "background.js"
-    }
-  }
-  
+"manifest_version": 2,
+"name": "AutoReload On Crash",
+"version": "1.0",
+"description": "Automatically reloads pages when they crash.",
+"permissions": ["tabs", "scripting"],
+"action": {
+    "default_popup": ""
+},
+"background": {
+    "service_worker": "background.js"
+}
+}
